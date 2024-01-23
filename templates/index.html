@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block content %}
+    {% include "header.html" %}
+    
+    <main>
+        <!--
+        <div class="container">
+            <div class="rounded-3 p-3 p-sm-5 ticket-search">
+                <div class="row">
+                    <div class="col-md-10 mx-auto text-center">
+                        <h1 class="display-3 pt-sm-5 my-5">Find great tickets to travel!</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <form class="p-4 wavy">
+                        <p>Register to enjoy a free and simple to use ticket flight search tool.</p>
+                        <div class="d-flex gap-2">
+                            <input name="email" type="email" class="form-control" autocomplete="off" placeholder="Your email">
+                            <button type="submit" class="btn btn-primary">Go</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        -->
+        <div class="container">
+            <div class="px-4 py-5 my-5 text-center">
+                <h2 class="fw-bold text-body-emphasis">Welcome to Tickets50!</h2>
+                <div class="col-lg-6 mx-auto">
+                    <p class="lead mb-4 text-gray">Find airplane tickets to the 50 most visited countries in the world! Select a country from the list bellow and find yourself a deal.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="countries_list container my-5">
+            <div class="row g-4">
+            {% for country in countries %}
+                <div class="col-sm-6 col-lg-2 col-6">
+                    <div class="card card-img-scale overflow-hidden bg-transparent">
+                        <!-- Image -->
+                        <div class="card-img-scale-wrapper rounded-3">
+                            <img src="../static/images/countries/{{ country.url }}.jpg" class="card-img" alt="hotel image">
+                        </div>
+
+                        <!-- Card body -->
+                        <div class="card-body px-2">
+                            <!-- Title -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="card-title"><a href="{{ url_for('find_ticket', country_id=country.country) }}" class="stretched-link">{{ country.country }}</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    {% include "footer.html" %}
+    
+{% endblock %}

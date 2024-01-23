@@ -1,0 +1,64 @@
+:host, :root, body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.logo h1{
+    font-family: 'Lobster', sans-serif;
+    color: #3999e9;
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.ticket-search {
+    background-image: url(../static/images/airplane_big.png); background-position: center center; background-repeat: no-repeat; background-size: cover;
+}
+
+.ticket-search h1 {
+    font-weight: 600;
+    color: #292d3e;
+}
+
+
+.gap-1 {
+    gap: 1rem;
+}
+
+.gap-2 {
+    gap: 2rem;
+}
+
+footer div div {
+    color: #292d3e;
+}
+
+/* countries_list */
+.countries_list .card{
+    border: none;
+}
+
+.card-title {
+    font-weight: 800;
+}
+
+.card-title a {
+    text-decoration: none;
+    color: #292d3e;
+}
+
+
+.icon-md {
+    width: 2.6rem;
+    height: 2.6rem;
+    line-height: 2.6rem;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.text-gray {
+    color: #747579;
+}
+
+.card-header {
+    background-color: white;
+    margin-bottom: 0 !important;
+}

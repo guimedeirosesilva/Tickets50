@@ -1,0 +1,23 @@
+html,
+body {
+  height: 100%;
+}
+
+:host, :root, body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.logo span {
+    font-family: 'Lobster', sans-serif;
+    color: #3999e9;
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+.form-register {
+  max-width: 330px;
+  padding: 1rem;
+}
+

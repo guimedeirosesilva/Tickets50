@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Ticket Found!
+{% endblock %}
+
+{% block content %}
+    {% include "header.html" %}
+
+
+    <div class="container">
+        <h3>This is the cheapest flight route we found!</h3>
+        <hr>
+        <div class="row">
+            <div class="col-md-3 mt-3">
+                <h4>Information</h4>
+                <div class="d-sm-flex justify-content-sm-between align-items-center">
+                    <div class="d-flex mb-2 mb-sm-0">
+                        <p>Total Price:</p>
+                    </div>
+                    <h5 class="fw-bold">U$ {{ travel_info.price }}</h5>
+                </div>
+                <a href="{{ travel_info.deep_link }}" class="btn btn-success my-3" target="_blank">Purchase Tickets</a>
+            </div>
+            <div class="col-md-9 mt-3">
+                <h4>Outward Trip</h4>
+                {% for ticket in travel_info.route %}
+                    {% if ticket.flyFrom == travel_info.flyTo %}
+                        <h4 class="mt-5">Return Trip</h4>
+                    {% endif %}
+                    <div class="card border mb-3">
+                        <!-- Card header -->
+                        <div class="pt-4 px-4">
+                            <div class="d-sm-flex justify-content-sm-between align-items-center">
+                                <!-- Airline Name -->
+                                <div class="d-flex mb-2 mb-sm-0">
+                                    <img src="assets/images/element/09.svg" class="w-40px me-2" alt="">
+                                    <h6 class="fw-normal mb-0">{{ ticket.airline_name }} ({{ ticket.airline_iata_code }})</h6>
+                                </div>
+                                <h6 class="fw-normal mb-0"><span class="text-gray">Travel Class:</span> {{ ticket.fare_category_name }}</h6>
+                            </div>
+                        </div>
+
+                        <!-- Card body START -->
+                        <div class="card-body p-4">
+                            <!-- Ticket item START -->
+                            <div class="row g-4">
+                                <!-- Airport detail -->
+                                <div class="col-sm-4">
+                                    <!-- Title -->
+                                    <div class="d-flex gap-2">
+                                        <h4 class="fw-bold">{{ ticket.dTime.split(' ')[1] }}</h4>
+                                        <p class="mb-1 text-gray">({{ ticket.dTime.split(' ')[0] }})</p>
+                                    </div>
+                                    <div class="text-gray">
+                                        <p class="mb-1">{{ ticket.dept_airport }} ({{ ticket.flyFrom }}) </p>
+                                        <p class="mb-1">{{ ticket.cityFrom }}</p>
+                                    </div>
+                                </div>
+
+                                <!-- Time -->
+                                <div class="col-sm-4 my-sm-auto text-center">
+                                    <!-- Time -->
+                                    <h5 class="fw-bold">{{ ticket.flight_duration }}</h5>
+
+                                    <div class="position-relative my-4">
+                                        <!-- Line -->
+                                        <hr class="bg-primary opacity-5 position-relative">
+                                        <!-- Icon -->
+                                        <div class="icon-md bg-primary text-white rounded-circle position-absolute top-50 start-50 translate-middle">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-airplane-fill" viewBox="0 0 16 16">
+                                                <path d="M14.8,6.4C15.4,6.7,16,7.2,16,8s-0.6,1.3-1.2,1.6C14.3,9.9,13.6,10,13,10H9.3l-2.6,5.2C6.5,15.7,6,16,5.4,16H4  c-0.3,0-0.5-0.2-0.5-0.5c0,0,0-0.1,0-0.1l0.9-5.5L2.2,9.5l-1.3,1.3c-0.2,0.2-0.5,0.2-0.7,0C0.1,10.8,0,10.6,0,10.5v-5  C0,5.2,0.2,5,0.5,5c0.1,0,0.3,0.1,0.4,0.1l1.3,1.3l2.3-0.4L3.5,0.6c0-0.3,0.1-0.5,0.4-0.6C3.9,0,4,0,4,0h1.4C6,0,6.5,0.3,6.7,0.8  L9.3,6H13C13.6,6,14.3,6.1,14.8,6.4"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Airport detail -->
+                                <div class="col-sm-4">
+                                    <!-- Title -->
+                                    <div class="d-flex gap-2">
+                                        <h4 class="fw-bold">{{ ticket.aTime.split(' ')[1] }}</h4>
+                                        <p class="mb-1 text-gray">({{ ticket.aTime.split(' ')[0] }})</p>
+                                    </div>
+                                    <div class="text-gray">
+                                        <p class="mb-1">{{ ticket.arr_airport }} ({{ ticket.flyTo }}) </p>
+                                        <p class="mb-1">{{ ticket.cityTo }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% include "footer.html" %}
+{% endblock %}
